@@ -131,29 +131,31 @@ const servicesData = [
     },
     {
         id: "corporate-tax",
-        title: "Corporate Tax Solutions",
-        subtitle: "Strategic tax planning and compliance for the new corporate tax regime.",
+        title: "Corporate Tax UAE",
+        subtitle: "Comprehensive compliance and advisory for the evolving UAE Corporate Tax landscape.",
         icon: FiHome,
         overview: `
-      <p>With the implementation of Corporate Tax, businesses in the region face a new paradigm of fiscal responsibility. Understanding the nuances of the Corporate Tax Law is precise for maintaining profitability and compliance.</p>
-      <p>Our Corporate Tax practice assists you in evaluating the impact of tax on your business model, structuring your operations efficiently, and meeting all compliance obligations. We help you take advantage of available exemptions and reliefs while engaging ethically with tax planning.</p>
+      <p>The UAE Corporate Tax (CT) regime, effective for financial years starting on or after 1 June 2023, applies to all business activities across the Emirates. With a standard rate of <strong>9%</strong> on taxable income exceeding AED 375,000, businesses must navigate complex requirements including <strong>Transfer Pricing</strong>, <strong>Free Zone</strong> regulations, and <strong>Pillar Two (DMTT)</strong> implementation for large MNEs.</p>
+      <p>We provide end-to-end support, from <strong>Impact Assessment</strong> and <strong>Registration</strong> to filing and advisory. Our experts help you leverage key reliefs such as <strong>Small Business Relief</strong>, <strong>Participation Exemptions</strong>, and <strong>Tax Grouping</strong> to optimize your tax position while ensuring full compliance with FTA regulations and IFRS standards.</p>
     `,
         benefits: [
-            "Optimization of effective tax rate",
-            "Compliant transfer pricing policies",
-            "Utilization of Small Business Relief where applicable",
-            "Accurate calculation of taxable income",
-            "Reduced risk of tax audits"
+            "0% Tax Rate for Qualifying Free Zone Persons (subject to conditions)",
+            "Small Business Relief for revenues under AED 3 million (until 2026)",
+            "Participation Exemption on dividends and capital gains",
+            "Tax Grouping for consolidated filing and loss utilization",
+            "Reliefs for intra-group transfers and business restructuring"
         ],
         process: [
-            { title: "Impact Assessment", desc: "Analyzing how corporate tax affects your margins and cash flow." },
-            { title: "Structuring", desc: "Reviewing legal entities to ensure tax efficiency." },
-            { title: "Registration", desc: "Registering your business for Corporate Tax with the FTA." },
-            { title: "Compliance", desc: "Annual filing of Corporate Tax returns and maintenance of records." }
+            { title: "Registration & Assessment", desc: "Mandatory tax registration and initial impact assessment to determine residency and tax status." },
+            { title: "Financial Structuring", desc: "Reviewing legal entities to ensure tax efficiency, including Free Zone substance and Tax Group formation." },
+            { title: "Transfer Pricing", desc: "Ensuring related-party transactions meet the Arm's Length Principle and maintaining Master/Local files." },
+            { title: "Compliance & Filing", desc: "Preparation of IFRS financial statements and filing of annual Corporate Tax returns." }
         ],
         faq: [
-            { q: "Is there a threshold for Corporate Tax?", a: "Yes, currently 0% tax applies to taxable income up to AED 375,000." },
-            { q: "Do Free Zone companies pay tax?", a: "Qualifying Free Zone Persons can benefit from 0% rate on Qualifying Income, subject to meeting specific substance requirements." }
+            { q: "What are the UAE Corporate Tax rates?", a: "0% on income up to AED 375,000, and 9% on income above that. A 0% rate applies to Qualifying Free Zone Persons on qualifying income." },
+            { q: "Who is exempt from Corporate Tax?", a: "Exempt persons include Government entities, extractive businesses, qualifying public benefit entities, and certain investment/pension funds." },
+            { q: "How are Free Zone companies taxed?", a: "They can benefit from 0% CT if they meet 'qualifying' conditions: adequate substance, deriving qualifying income, and complying with transfer pricing rules." },
+            { q: "What is the Small Business Relief?", a: "Businesses with revenue below AED 3 million can elect to be treated as having no taxable income for tax periods up to Dec 31, 2026." }
         ]
     },
 
@@ -183,6 +185,62 @@ const servicesData = [
             { q: "What is the Arm's Length Principle?", a: "It requires that transactions between Related Parties be priced as if they were between independent parties under similar circumstances." },
             { q: "Who are Related Parties?", a: "Natural or juridical persons associated through ownership (50%+), control, or kinship (up to the 4th degree)." },
             { q: "Do I need to maintain documentation?", a: "Yes, Taxable Persons meeting the materiality threshold must maintain both a Master File and a Local File." }
+        ]
+    },
+    {
+        id: "oman-vat",
+        title: "Oman VAT",
+        subtitle: "Expert guidance on VAT compliance in the Sultanate of Oman.",
+        icon: FiGlobe,
+        overview: `
+      <p>Value Added Tax (VAT) was implemented in Oman effective from 16 April 2021, with a standard rate of <strong>5%</strong>. This aligns with the GCC Unified Agreement and applies to most goods and services, with specific provisions for zero-rating and exemptions.</p>
+      <p>We provide comprehensive support for businesses operating in Oman, from initial <strong>Registration</strong> to ongoing compliance. Our team ensures you navigate the complexities of Exempt vs. Zero-rated supplies, maintain compliant records for the mandatory 10-year period, and meet all quarterly filing deadlines to avoid penalties.</p>
+    `,
+        benefits: [
+            "Accurate classification of Standard, Zero-rated, and Exempt supplies",
+            "Management of Mandatory (OMR 38,500) and Voluntary (OMR 19,250) registration",
+            "Guidance on input tax recovery and apportionment",
+            "Keep accounting records, books, invoices, and other documents /records in any language,",
+            "Preparation for Tourist Refund Schemes and other special provisions"
+        ],
+        process: [
+            { title: "Registration", desc: "Assisting with online registration via the Tax Authority portal." },
+            { title: "Record Keeping", desc: "Ensuring maintenance of VAT records for 10 years (15 for real estate) in compliance with the law." },
+            { title: "Filing", desc: "Preparation and submission of quarterly VAT returns within 30 days of period end." },
+            { title: "Advisory", desc: "Consultation on complex transactions, transitional rules, and dispute resolution." }
+        ],
+        faq: [
+            { q: "What is the standard VAT rate in Oman?", a: "The standard rate is 5%. However, zero-rating applies to exports, basic foods, and international transport." },
+            { q: "When must I register for VAT?", a: "Registration is mandatory if annual taxable supplies exceed OMR 38,500. Voluntary registration is possible above OMR 19,250." },
+            { q: "How often are VAT returns filed?", a: "VAT returns must be filed on a quarterly basis, with payment due within 30 days of the quarter end." }
+        ]
+    },
+    {
+        id: "kuwait-tax",
+        title: "Kuwait VAT",
+        subtitle: "Strategic guidance on current tax obligations and preparation for upcoming VAT implementation.",
+        icon: FiBriefcase,
+        overview: `
+      <p>While Kuwait is a signatory to the GCC VAT Framework Agreement, the implementation of <strong>Value Added Tax (VAT)</strong> is currently pending parliamentary approval. The draft law is under preparation, and businesses must remain agile to adapt when the 5% VAT rate is eventually introduced.</p>
+      <p>Currently, businesses must navigate other fiscal obligations, including a unified <strong>Customs Tariff of 5%</strong> on imports, and for listed companies, the <strong>National Labour Support Tax (NLST)</strong>. Our team provides comprehensive compliance support for these existing regimes while preparing your business for the future VAT landscape.</p>
+    `,
+        benefits: [
+            "Preparation for future VAT compliance (gap analysis)",
+            "Management of National Labour Support Tax (NLST) for listed entities",
+            "Compliance with 5% GCC Unified Customs Tariff",
+            "Advisory on Social Security contributions for Kuwaiti nationals",
+            "Calculation of terminal indemnity payments for expatriate staff"
+        ],
+        process: [
+            { title: "Readiness Assessment", desc: "Evaluating current systems and contracts for future VAT readiness." },
+            { title: "NLST Compliance", desc: "Calculating and filing the 2.5% employment tax for KSE-listed companies." },
+            { title: "Payroll Advisory", desc: "Managing social security (11.5% employer contribution) and indemnity calculations." },
+            { title: "Customs Compliance", desc: "Ensuring proper classification and valuation for the 5% customs duty." }
+        ],
+        faq: [
+            { q: "Is VAT active in Kuwait?", a: "Not yet. The GCC framework is under discussion in Parliament, but implementation dates are pending." },
+            { q: "What is the NLST?", a: "The National Labour Support Tax is a 2.5% levy on the net annual profits of Kuwaiti companies listed on the KSE." },
+            { q: "Are there payroll taxes?", a: "No personal income tax exists, but employers must contribute 11.5% to social security for Kuwaiti nationals." }
         ]
     },
     {
@@ -422,20 +480,6 @@ const ServiceDetail = () => {
                         </div>
 
                         {/* Download Brochure */}
-                        <div className="bg-blue-50 rounded-2xl border border-blue-100 p-6">
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="w-12 h-12 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
-                                    <FiDownload className="w-6 h-6" />
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-slate-900">Service Brochure</h3>
-                                    <p className="text-sm text-slate-500">PDF, 2.4 MB</p>
-                                </div>
-                            </div>
-                            <button className="w-full py-2.5 border-2 border-blue-200 text-blue-700 font-semibold rounded-lg hover:bg-blue-100 transition-colors">
-                                Download Now
-                            </button>
-                        </div>
 
                     </div>
                 </div>

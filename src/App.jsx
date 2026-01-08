@@ -302,7 +302,7 @@ const Home = () => {
               variants={staggerContainerVariants}
             >
               {[
-                { num: "15+", label: "Years Experience" },
+                { num: "1000+", label: "Filings" },
                 { num: "500+", label: "Happy Clients" },
                 { num: "98%", label: "Success Rate" },
               ].map((stat, idx) => (
@@ -451,21 +451,21 @@ const Home = () => {
               },
               {
                 id: "corporate-tax",
-                title: "Corporate Tax (Gulf)",
+                title: "Corporate Tax UAE",
                 description:
-                  "Expert guidance on corporate tax regulations and compliance for businesses operating in Gulf countries.",
+                  "Comprehensive compliance and advisory for the evolving UAE Corporate Tax landscape, including Free Zone and Pillar Two regulations.",
                 items: [
                   {
-                    name: "Tax Compliance",
-                    desc: "Ensure full compliance with corporate tax laws and regulations",
+                    name: "Registration & Assessment",
+                    desc: "Mandatory registration support and initial impact assessment",
                   },
                   {
-                    name: "Tax Advisory",
-                    desc: "Strategic tax planning and advisory for business growth",
+                    name: "Free Zone Taxation",
+                    desc: "Expertise in Qualifying Free Zone Person (QFZP) 0% tax benefits",
                   },
                   {
-                    name: "Tax Planning",
-                    desc: "Optimize your tax position while maintaining compliance",
+                    name: "Transfer Pricing",
+                    desc: "Arm's length principle compliance and documentation",
                   },
                 ],
                 icon: FiHome,
@@ -490,6 +490,48 @@ const Home = () => {
                   },
                 ],
                 icon: FiTrendingUp,
+              },
+              {
+                id: "oman-vat",
+                title: "Oman VAT",
+                description:
+                  "Comprehensive support for Oman VAT compliance, including registration, filing, and advisory.",
+                items: [
+                  {
+                    name: "Registration",
+                    desc: "Mandatory (OMR 38.5k) and Voluntary (OMR 19.25k) support",
+                  },
+                  {
+                    name: "Filing",
+                    desc: "Quarterly VAT return preparation and submission",
+                  },
+                  {
+                    name: "Advisory",
+                    desc: "Guidance on zero-rated, exempt, and standard rated supplies",
+                  },
+                ],
+                icon: FiGlobe,
+              },
+              {
+                id: "kuwait-tax",
+                title: "Kuwait VAT",
+                description:
+                  "Guidance on current fiscal obligations (NLST, Customs) and VAT readiness preparation.",
+                items: [
+                  {
+                    name: "VAT Readiness",
+                    desc: "Impact assessment for pending 5% VAT implementation",
+                  },
+                  {
+                    name: "Strategy Design",
+                    desc: "Roadmap for VAT adoption across departments",
+                  },
+                  {
+                    name: "System Readiness",
+                    desc: "Validating IT and accounting software capabilities",
+                  },
+                ],
+                icon: FiBriefcase,
               },
               {
                 id: "ussalestax",
@@ -830,7 +872,7 @@ const Home = () => {
                   <option>Accounting</option>
                   <option>VAT Services</option>
                   <option>Corporate Tax</option>
-                  <option>Software Consultancy</option>
+                  <option>Software Partners</option>
                   <option>Auditing & Assurance</option>
                 </select>
               </div>
