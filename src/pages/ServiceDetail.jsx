@@ -16,6 +16,7 @@ import {
     FiGlobe,
     FiChevronRight
 } from "react-icons/fi";
+import SalesTaxCalculator from "../components/SalesTaxCalculator";
 
 const servicesData = [
     {
@@ -355,6 +356,11 @@ const ServiceDetail = () => {
                                 dangerouslySetInnerHTML={{ __html: service.overview }}
                             />
                         </motion.div>
+
+                        {/* US Sales Tax Calculator */}
+                        {service.id === 'ussalestax' && (
+                            <SalesTaxCalculator />
+                        )}
 
                         {/* Benefits Grid */}
                         <motion.div
