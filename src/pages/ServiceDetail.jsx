@@ -289,7 +289,7 @@ const ServiceDetail = () => {
             <div className="min-h-screen flex items-center justify-center bg-slate-50">
                 <div className="text-center">
                     <h2 className="text-2xl font-bold text-slate-900">Service Not Found</h2>
-                    <Link to="/" className="text-emerald-600 font-semibold mt-4 inline-block hover:underline">
+                    <Link to="/" className="text-secondary-600 font-semibold mt-4 inline-block hover:underline">
                         Back to Home
                     </Link>
                 </div>
@@ -305,13 +305,13 @@ const ServiceDetail = () => {
             <div className="h-20" />
 
             {/* Hero Section */}
-            <section className="bg-emerald-900 text-white relative overflow-hidden py-20 lg:py-24">
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500 rounded-full blur-[150px] opacity-20 -translate-y-1/2 translate-x-1/3"></div>
+            <section className="bg-secondary-900 text-white relative overflow-hidden py-20 lg:py-24">
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary-500 rounded-full blur-[150px] opacity-20 -translate-y-1/2 translate-x-1/3"></div>
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600 rounded-full blur-[120px] opacity-20 translate-y-1/3 -translate-x-1/4"></div>
 
                 <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
                     {/* Breadcrumb */}
-                    <div className="flex items-center gap-2 text-emerald-200 text-sm font-medium mb-6">
+                    <div className="flex items-center gap-2 text-secondary-200 text-sm font-medium mb-6">
                         <Link to="/" className="hover:text-white transition-colors">Home</Link>
                         <FiChevronRight className="w-4 h-4" />
                         <Link to="/#services" className="hover:text-white transition-colors">Services</Link>
@@ -321,13 +321,13 @@ const ServiceDetail = () => {
 
                     <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
                         <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
-                            <Icon className="w-10 h-10 text-emerald-300" />
+                            <Icon className="w-10 h-10 text-secondary-300" />
                         </div>
                         <div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-white">
                                 {service.title}
                             </h1>
-                            <p className="text-lg md:text-xl text-emerald-100 max-w-2xl leading-relaxed">
+                            <p className="text-lg md:text-xl text-secondary-100 max-w-2xl leading-relaxed">
                                 {service.subtitle}
                             </p>
                         </div>
@@ -348,7 +348,7 @@ const ServiceDetail = () => {
                             transition={{ duration: 0.5 }}
                         >
                             <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                                <span className="w-8 h-1 bg-emerald-600 rounded-full"></span>
+                                <span className="w-8 h-1 bg-secondary-600 rounded-full"></span>
                                 Overview
                             </h2>
                             <div
@@ -370,13 +370,13 @@ const ServiceDetail = () => {
                             transition={{ duration: 0.5, delay: 0.1 }}
                         >
                             <h2 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                                <span className="w-8 h-1 bg-emerald-600 rounded-full"></span>
+                                <span className="w-8 h-1 bg-secondary-600 rounded-full"></span>
                                 Key Benefits
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {service.benefits.map((benefit, idx) => (
                                     <div key={idx} className="flex items-start gap-3 p-5 rounded-xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                                        <FiCheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+                                        <FiCheckCircle className="w-6 h-6 text-secondary-600 flex-shrink-0 mt-0.5" />
                                         <span className="font-medium text-slate-700">{benefit}</span>
                                     </div>
                                 ))}
@@ -391,13 +391,13 @@ const ServiceDetail = () => {
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
                             <h2 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                                <span className="w-8 h-1 bg-emerald-600 rounded-full"></span>
+                                <span className="w-8 h-1 bg-secondary-600 rounded-full"></span>
                                 Our Process
                             </h2>
                             <div className="space-y-8 relative before:absolute before:left-[19px] before:top-4 before:bottom-4 before:w-0.5 before:bg-slate-200">
                                 {service.process.map((step, idx) => (
                                     <div key={idx} className="relative flex items-start gap-6">
-                                        <div className="absolute left-0 w-10 h-10 rounded-full bg-white border-4 border-emerald-50 text-emerald-600 font-bold flex items-center justify-center z-10 shadow-sm">
+                                        <div className="absolute left-0 w-10 h-10 rounded-full bg-white border-4 border-secondary-50 text-secondary-600 font-bold flex items-center justify-center z-10 shadow-sm">
                                             {idx + 1}
                                         </div>
                                         <div className="pt-2 pl-14">
@@ -418,7 +418,7 @@ const ServiceDetail = () => {
                                 transition={{ duration: 0.5, delay: 0.3 }}
                             >
                                 <h2 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                                    <span className="w-8 h-1 bg-emerald-600 rounded-full"></span>
+                                    <span className="w-8 h-1 bg-secondary-600 rounded-full"></span>
                                     Frequently Asked Questions
                                 </h2>
                                 <div className="space-y-4">
@@ -440,29 +440,29 @@ const ServiceDetail = () => {
                     <div className="lg:col-span-1 space-y-8">
 
                         {/* Need Help Card */}
-                        <div className="bg-emerald-900 rounded-2xl p-8 text-white relative overflow-hidden shadow-xl">
+                        <div className="bg-secondary-900 rounded-2xl p-8 text-white relative overflow-hidden shadow-xl">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3"></div>
                             <h3 className="text-2xl font-bold mb-4">Need Expert Advice?</h3>
-                            <p className="text-emerald-100 mb-6 leading-relaxed">
+                            <p className="text-secondary-100 mb-6 leading-relaxed">
                                 Speak to one of our consultants to see how we can help your business grow.
                             </p>
                             <ul className="space-y-4 mb-8">
                                 <li className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center">
-                                        <FiPhone className="w-4 h-4 text-emerald-300" />
+                                    <div className="w-8 h-8 rounded-full bg-secondary-800 flex items-center justify-center">
+                                        <FiPhone className="w-4 h-4 text-secondary-300" />
                                     </div>
-                                    <span className="font-medium">+91 XXXXXXXX</span>
+                                    <span className="font-medium">9994467838</span>
                                 </li>
                                 <li className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center">
-                                        <FiMail className="w-4 h-4 text-emerald-300" />
+                                    <div className="w-8 h-8 rounded-full bg-secondary-800 flex items-center justify-center">
+                                        <FiMail className="w-4 h-4 text-secondary-300" />
                                     </div>
-                                    <span className="font-medium">contact@company.com</span>
+                                    <span className="font-medium">rprogers6381@gmail.com</span>
                                 </li>
                             </ul>
                             <button
                                 onClick={() => navigate('/#contact')}
-                                className="w-full py-3 bg-white text-emerald-900 font-bold rounded-lg hover:bg-emerald-50 transition-colors shadow-lg"
+                                className="w-full py-3 bg-white text-secondary-900 font-bold rounded-lg hover:bg-secondary-50 transition-colors shadow-lg"
                             >
                                 Get Specific Quote
                             </button>
@@ -476,7 +476,7 @@ const ServiceDetail = () => {
                                     <Link
                                         key={s.id}
                                         to={`/services/${s.id}`}
-                                        className="block p-3 rounded-lg hover:bg-slate-50 text-slate-600 hover:text-emerald-600 transition-colors font-medium flex justify-between items-center group"
+                                        className="block p-3 rounded-lg hover:bg-slate-50 text-slate-600 hover:text-secondary-600 transition-colors font-medium flex justify-between items-center group"
                                     >
                                         {s.title}
                                         <FiChevronRight className="opacity-0 group-hover:opacity-100 transition-opacity" />

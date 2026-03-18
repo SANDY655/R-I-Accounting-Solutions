@@ -83,6 +83,15 @@ const Navbar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Sync active tab with hash
   React.useEffect(() => {
@@ -123,7 +132,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 lg:px-12 pointer-events-none">
+      <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 pointer-events-none transition-all duration-300 ${isScrolled ? "py-4 bg-white/80 backdrop-blur-md shadow-sm" : "py-6"}`}>
         {/* Logo - Left */}
         <div className="pointer-events-auto">
           <motion.div
@@ -132,10 +141,8 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             onClick={() => scrollToSection("home")}
           >
-            <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
-              <FiBriefcase className="w-5 h-5" />
-            </div>
-            <span className="text-xl font-bold text-slate-900 tracking-tight">YourCompany</span>
+            <img src="/images/Logo.jpeg" alt="R&I Logo" className="h-10 w-auto object-contain rounded-md" />
+            <span className="text-xl font-bold text-slate-900 tracking-tight">R & I</span>
           </motion.div>
         </div>
 
@@ -153,13 +160,13 @@ const Navbar = () => {
               className={`
                 relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
                 ${activeTab === item.id
-                  ? "bg-white text-emerald-600 shadow-sm"
+                  ? "bg-white text-secondary-600 shadow-sm"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/50"
                 }
               `}
             >
               {activeTab === item.id && (
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-secondary-600"></span>
               )}
               <span className={activeTab === item.id ? "ml-2" : ""}>{item.label}</span>
             </button>
@@ -169,7 +176,7 @@ const Navbar = () => {
         {/* Right Side - CTA & Mobile Toggle */}
         <div className="flex items-center gap-4 pointer-events-auto">
           <motion.button
-            className="hidden lg:block px-6 py-2.5 rounded-full bg-emerald-600 text-white text-sm font-semibold shadow-lg shadow-emerald-600/20 hover:shadow-xl hover:shadow-emerald-600/30 hover:-translate-y-0.5 transition-all duration-300"
+            className="hidden lg:block px-6 py-2.5 rounded-full bg-secondary-600 text-white text-sm font-semibold shadow-lg shadow-secondary-600/20 hover:shadow-xl hover:shadow-secondary-600/30 hover:-translate-y-0.5 transition-all duration-300"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -209,7 +216,7 @@ const Navbar = () => {
             </button>
           ))}
           <button
-            className="mt-4 w-full py-3.5 rounded-xl bg-emerald-600 text-white font-semibold shadow-lg shadow-emerald-600/20"
+            className="mt-4 w-full py-3.5 rounded-xl bg-secondary-600 text-white font-semibold shadow-lg shadow-secondary-600/20"
             onClick={() => scrollToSection("contact")}
           >
             Get Template
@@ -223,6 +230,20 @@ const Navbar = () => {
 const Home = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get("name") || "";
+    const email = formData.get("email") || "";
+    const service = formData.get("service") || "";
+    const message = formData.get("message") || "";
+    
+    const subject = `New Inquiry from ${name} - ${service}`;
+    const body = `Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`;
+    
+    window.location.href = `mailto:rprogers6381@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   React.useEffect(() => {
     if (location.hash) {
@@ -251,7 +272,7 @@ const Home = () => {
             variants={staggerContainerVariants}
           >
             <motion.div className="inline-block" variants={fadeInUp}>
-              <span className="inline-block px-4 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-medium rounded-full mb-6">
+              <span className="inline-block px-4 py-1.5 bg-secondary-50 text-secondary-700 text-sm font-medium rounded-full mb-6">
                 Professional Financial Services
               </span>
             </motion.div>
@@ -262,7 +283,7 @@ const Home = () => {
             >
               Expert Accounting
               <br />
-              <span className="text-emerald-600">& Tax Solutions</span>
+              <span className="text-secondary-600">& Tax Solutions</span>
             </motion.h1>
 
             <motion.p
@@ -279,7 +300,7 @@ const Home = () => {
             >
               <motion.button
                 onClick={() => navigate('/#contact')}
-                className="px-8 py-3.5 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-600/20 cursor-pointer"
+                className="px-8 py-3.5 rounded-lg bg-secondary-600 text-white font-medium hover:bg-secondary-700 transition-all duration-300 hover:shadow-lg hover:shadow-secondary-600/20 cursor-pointer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -287,7 +308,7 @@ const Home = () => {
               </motion.button>
               <motion.button
                 onClick={() => navigate('/#services')}
-                className="px-8 py-3.5 rounded-lg border-2 border-slate-200 text-slate-700 font-medium hover:border-emerald-600 hover:text-emerald-600 transition-all duration-300 cursor-pointer"
+                className="px-8 py-3.5 rounded-lg border-2 border-slate-200 text-slate-700 font-medium hover:border-secondary-600 hover:text-secondary-600 transition-all duration-300 cursor-pointer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -311,7 +332,7 @@ const Home = () => {
                   variants={scaleIn}
                   whileHover={{ scale: 1.1 }}
                 >
-                  <div className="text-3xl md:text-4xl font-extrabold text-emerald-600 tracking-tight">
+                  <div className="text-3xl md:text-4xl font-extrabold text-secondary-600 tracking-tight">
                     {stat.num}
                   </div>
                   <div className="text-sm text-slate-600 mt-2 font-medium">
@@ -329,7 +350,7 @@ const Home = () => {
             animate="visible"
             variants={slideInRight}
           >
-            <div className="absolute -top-4 -right-4 w-72 h-72 bg-emerald-100 rounded-full blur-3xl opacity-30"></div>
+            <div className="absolute -top-4 -right-4 w-72 h-72 bg-secondary-100 rounded-full blur-3xl opacity-30"></div>
             <div className="absolute -bottom-4 -left-4 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
 
             <motion.div
@@ -352,7 +373,7 @@ const Home = () => {
       <section id="services" className="py-20 px-6 lg:px-10 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-full mb-4 uppercase tracking-wide">
+            <span className="inline-block px-4 py-1.5 bg-secondary-50 text-secondary-700 text-sm font-semibold rounded-full mb-4 uppercase tracking-wide">
               What We Offer
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-5 tracking-tight">
@@ -576,13 +597,13 @@ const Home = () => {
                     },
                   }}
                   whileHover={{ y: -8 }}
-                  className="group p-8 rounded-xl bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300"
+                  className="group p-8 rounded-xl bg-white border border-slate-200 hover:border-secondary-300 hover:shadow-xl transition-all duration-300"
                 >
                   <motion.div
-                    className="w-14 h-14 rounded-lg bg-emerald-50 flex items-center justify-center mb-5 group-hover:bg-emerald-100 transition-all duration-300"
+                    className="w-14 h-14 rounded-lg bg-secondary-50 flex items-center justify-center mb-5 group-hover:bg-secondary-100 transition-all duration-300"
                     whileHover={{ scale: 1.1, rotate: 10 }}
                   >
-                    <IconComponent className="w-7 h-7 text-emerald-600" />
+                    <IconComponent className="w-7 h-7 text-secondary-600" />
                   </motion.div>
                   <motion.h3
                     className="text-xl font-bold text-slate-900 mb-3 tracking-tight"
@@ -613,7 +634,7 @@ const Home = () => {
                         variants={itemVariants}
                       >
                         <div className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 flex-shrink-0 mt-2"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-secondary-600 flex-shrink-0 mt-2"></span>
                           <div>
                             <div className="font-semibold text-slate-900">
                               {item.name}
@@ -634,7 +655,7 @@ const Home = () => {
                   >
                     <a
                       href={`/services/${service.id}`} // Updated link for routing
-                      className="inline-flex items-center gap-2 text-emerald-600 font-semibold text-sm hover:text-emerald-700 transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 text-secondary-600 font-semibold text-sm hover:text-secondary-700 transition-all cursor-pointer"
                     >
                       Learn More
                       <span>→</span>
@@ -657,9 +678,9 @@ const Home = () => {
             viewport={{ once: true }}
             variants={slideInLeft}
           >
-            <div className="absolute -top-4 -left-4 w-full h-full border-2 border-emerald-200 rounded-2xl"></div>
+            <div className="absolute -top-4 -left-4 w-full h-full border-2 border-secondary-200 rounded-2xl"></div>
             <motion.div
-              className="relative h-[400px] rounded-2xl bg-gradient-to-br from-emerald-50 to-blue-50 border border-slate-200 overflow-hidden shadow-lg"
+              className="relative h-[400px] rounded-2xl bg-gradient-to-br from-secondary-50 to-blue-50 border border-slate-200 overflow-hidden shadow-lg"
               whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
               transition={{ duration: 0.3 }}
             >
@@ -678,7 +699,7 @@ const Home = () => {
             variants={staggerContainerVariants}
           >
             <motion.span
-              className="inline-block px-4 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-full mb-4 uppercase tracking-wide"
+              className="inline-block px-4 py-1.5 bg-secondary-50 text-secondary-700 text-sm font-semibold rounded-full mb-4 uppercase tracking-wide"
               variants={itemVariants}
             >
               About Us
@@ -738,10 +759,10 @@ const Home = () => {
                     whileHover={{ x: 5 }}
                   >
                     <motion.div
-                      className="w-12 h-12 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0"
+                      className="w-12 h-12 rounded-lg bg-secondary-50 flex items-center justify-center flex-shrink-0"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                     >
-                      <IconComponent className="w-6 h-6 text-emerald-600" />
+                      <IconComponent className="w-6 h-6 text-secondary-600" />
                     </motion.div>
                     <div>
                       <h4 className="font-bold text-slate-900 mb-1.5 text-[17px] tracking-tight">
@@ -763,7 +784,7 @@ const Home = () => {
       <section id="contact" className="py-20 px-6 lg:px-10 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-full mb-4 uppercase tracking-wide">
+            <span className="inline-block px-4 py-1.5 bg-secondary-50 text-secondary-700 text-sm font-semibold rounded-full mb-4 uppercase tracking-wide">
               Get In Touch
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-5 tracking-tight">
@@ -783,8 +804,8 @@ const Home = () => {
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { icon: FiPhone, label: "Phone", value: "+91 XXXXXXXX" },
-                    { icon: FiMail, label: "Email", value: "info@company.com" },
+                    { icon: FiPhone, label: "Phone", value: "9994467838" },
+                    { icon: FiMail, label: "Email", value: "rprogers6381@gmail.com" },
                     {
                       icon: FiMapPin,
                       label: "Location",
@@ -793,14 +814,14 @@ const Home = () => {
                     {
                       icon: FiMessageCircle,
                       label: "WhatsApp",
-                      value: "+91 XXXXXXXX",
+                      value: "971525270903",
                     },
                   ].map((item, idx) => {
                     const IconComponent = item.icon;
                     return (
                       <motion.div
                         key={item.label}
-                        className="flex items-center gap-4 p-5 bg-white rounded-lg border border-slate-200 hover:border-emerald-200 hover:shadow-md transition-all"
+                        className="flex items-center gap-4 p-5 bg-white rounded-lg border border-slate-200 hover:border-secondary-200 hover:shadow-md transition-all"
                         initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: idx * 0.1 }}
@@ -808,10 +829,10 @@ const Home = () => {
                         whileHover={{ y: -4 }}
                       >
                         <motion.div
-                          className="w-12 h-12 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0"
+                          className="w-12 h-12 rounded-lg bg-secondary-50 flex items-center justify-center flex-shrink-0"
                           whileHover={{ scale: 1.1 }}
                         >
-                          <IconComponent className="w-5 h-5 text-emerald-600" />
+                          <IconComponent className="w-5 h-5 text-secondary-600" />
                         </motion.div>
                         <div>
                           <div className="text-[13px] font-medium text-slate-500 uppercase tracking-wide mb-0.5">
@@ -827,30 +848,21 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="p-6 bg-emerald-50 rounded-xl border border-emerald-100">
-                <h4 className="font-bold text-slate-900 mb-3 text-lg tracking-tight">
-                  Business Hours
-                </h4>
-                <p className="text-slate-700 text-[15px] leading-relaxed">
-                  Monday - Friday: 9:00 AM - 6:00 PM
-                  <br />
-                  Saturday: 10:00 AM - 4:00 PM
-                  <br />
-                  Sunday: Closed
-                </p>
-              </div>
+
             </div>
 
             {/* Form */}
-            <form className="bg-white p-8 rounded-xl border border-slate-200 shadow-lg space-y-5">
+            <form onSubmit={handleFormSubmit} className="bg-white p-8 rounded-xl border border-slate-200 shadow-lg space-y-5">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
                   Full Name
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  required
                   placeholder="John Doe"
-                  className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-secondary-500 focus:ring-2 focus:ring-secondary-100 outline-none transition-all"
                 />
               </div>
               <div>
@@ -859,21 +871,23 @@ const Home = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  required
                   placeholder="john@example.com"
-                  className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-secondary-500 focus:ring-2 focus:ring-secondary-100 outline-none transition-all"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
                   Service Interested In
                 </label>
-                <select className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 outline-none transition-all">
-                  <option>Select a service</option>
-                  <option>Accounting</option>
-                  <option>VAT Services</option>
-                  <option>Corporate Tax</option>
-                  <option>Software Partners</option>
-                  <option>Auditing & Assurance</option>
+                <select name="service" required className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-secondary-500 focus:ring-2 focus:ring-secondary-100 outline-none transition-all">
+                  <option value="">Select a service</option>
+                  <option value="Accounting">Accounting</option>
+                  <option value="VAT Services">VAT Services</option>
+                  <option value="Corporate Tax">Corporate Tax</option>
+                  <option value="Software Partners">Software Partners</option>
+                  <option value="Auditing & Assurance">Auditing & Assurance</option>
                 </select>
               </div>
               <div>
@@ -881,14 +895,16 @@ const Home = () => {
                   Message
                 </label>
                 <textarea
+                  name="message"
                   rows="4"
+                  required
                   placeholder="Tell us about your requirements..."
-                  className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-secondary-500 focus:ring-2 focus:ring-secondary-100 outline-none transition-all resize-none"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-lg bg-emerald-600 text-white font-semibold text-base shadow-lg shadow-emerald-600/25 hover:bg-emerald-700 hover:shadow-xl hover:shadow-emerald-600/35 transition-all duration-300"
+                className="w-full py-3.5 rounded-lg bg-secondary-600 text-white font-semibold text-base shadow-lg shadow-secondary-600/25 hover:bg-secondary-700 hover:shadow-xl hover:shadow-secondary-600/35 transition-all duration-300"
               >
                 Send Message
               </button>
@@ -913,16 +929,14 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-emerald-600 text-white">
-                <FiHome className="w-4 h-4" />
-              </div>
+              <img src="/images/Logo.jpeg" alt="R&I Logo" className="h-12 w-auto object-contain rounded-md shadow-sm" />
               <div className="text-sm">
-                <div className="font-bold text-slate-900">YourCompany</div>
+                <div className="font-bold text-slate-900">R & I</div>
                 <div className="text-slate-500">Accounting & Tax Advisory</div>
               </div>
             </div>
             <div className="text-sm text-slate-500">
-              © {new Date().getFullYear()} Your Company Name. All rights
+              © {new Date().getFullYear()} R & I. All rights
               reserved.
             </div>
           </div>

@@ -97,7 +97,7 @@ const SalesTaxCalculator = () => {
                     {/* Dropdown Trigger */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="w-full bg-white border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 flex items-center justify-between p-3 transition-all hover:border-emerald-400"
+                        className="w-full bg-white border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 flex items-center justify-between p-3 transition-all hover:border-secondary-400"
                     >
                         <span className="font-medium truncate">{selectedState}</span>
                         <FiChevronDown className={`h-4 w-4 text-slate-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
@@ -120,13 +120,13 @@ const SalesTaxCalculator = () => {
                                             setSelectedState(data.state);
                                             setIsOpen(false);
                                         }}
-                                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-emerald-50 transition-colors flex items-center justify-between
-                      ${selectedState === data.state ? 'bg-emerald-50 text-emerald-700 font-semibold' : 'text-slate-700'}
+                                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-secondary-50 transition-colors flex items-center justify-between
+                      ${selectedState === data.state ? 'bg-secondary-50 text-secondary-700 font-semibold' : 'text-slate-700'}
                     `}
                                     >
                                         {data.state}
                                         {selectedState === data.state && (
-                                            <FiCheck className="w-4 h-4 text-emerald-600" />
+                                            <FiCheck className="w-4 h-4 text-secondary-600" />
                                         )}
                                     </button>
                                 ))}
@@ -147,7 +147,7 @@ const SalesTaxCalculator = () => {
                     {/* State Rate */}
                     <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                         <span className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">State Rate</span>
-                        <span className="text-lg font-bold text-emerald-600">{currentData.stateRate}</span>
+                        <span className="text-lg font-bold text-secondary-600">{currentData.stateRate}</span>
                     </div>
 
                     {/* Local Rate Range */}
@@ -159,7 +159,7 @@ const SalesTaxCalculator = () => {
                     {/* Avg Rate */}
                     <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                         <span className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Avg. State + Local</span>
-                        <span className="text-lg font-bold text-emerald-600">{currentData.avgRate}</span>
+                        <span className="text-lg font-bold text-secondary-600">{currentData.avgRate}</span>
                     </div>
 
                     {/* Combined Rank */}
