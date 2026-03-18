@@ -144,16 +144,16 @@ const Navbar = () => {
           <div className={`relative rounded-xl overflow-hidden transition-all duration-500 ${isScrolled ? "shadow-md" : "shadow-lg"}`}>
             <img
               src="/images/Logo.jpeg"
-              alt="R&I Logo"
+              alt="RNI Logo"
               className="h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
             />
           </div>
           <div className="hidden sm:block">
             <div className={`text-[15px] font-bold tracking-tight transition-colors duration-300 ${isScrolled ? "text-secondary-950" : "text-secondary-950"}`}>
-              R <span className="text-primary-600">&</span> I Tax Solutions
+              RNI Accounting Services
             </div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary-400 leading-none mt-0.5">
-              Tax Solutions
+              Accounting Services
             </div>
           </div>
         </motion.div>
@@ -259,8 +259,8 @@ const Navbar = () => {
             {/* Close strip */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-secondary-100">
               <div className="flex items-center gap-3">
-                <img src="/images/Logo.jpeg" alt="R&I" className="h-10 w-auto object-contain" />
-                <div className="text-sm font-bold text-secondary-950 tracking-tight">R <span className="text-primary-600">&</span> I Tax Solutions</div>
+                <img src="/images/Logo.jpeg" alt="RNI" className="h-10 w-auto object-contain" />
+                <div className="text-sm font-bold text-secondary-950 tracking-tight">RNI Accounting Services</div>
               </div>
               <button
                 className="p-2.5 rounded-full bg-secondary-100 text-secondary-900"
@@ -414,7 +414,7 @@ const Home = () => {
                     ))}
                   </div>
                   <div className="text-sm font-semibold text-secondary-800">
-                    Trusted by <span className="text-primary-600">500+</span> firms
+                    Trusted by <span className="text-primary-600">500+</span> Clients
                   </div>
                 </div>
               </motion.div>
@@ -436,18 +436,7 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary-950/80 via-secondary-950/20 to-transparent"></div>
 
                 {/* Floating Glass Stat */}
-                <motion.div
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.8, ...transitionSpring }}
-                  className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl text-white"
-                >
-                  <div className="flex justify-between items-end mb-2">
-                    <div className="text-4xl font-bold tracking-tighter">$2.4B+</div>
-                    <FiTrendingUp className="text-accent-400 w-6 h-6 mb-1" />
-                  </div>
-                  <div className="text-sm font-medium text-white/80 uppercase tracking-widest">Client Assets Optimised</div>
-                </motion.div>
+              
               </div>
             </motion.div>
           </div>
@@ -760,11 +749,11 @@ const Home = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-16">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1.5 shadow-lg">
-                <img src="/images/Logo.jpeg" alt="R&I Logo" className="w-full h-full object-contain" />
+                <img src="/images/Logo.jpeg" alt="RNI Logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <div className="text-xl font-bold text-white tracking-tight">R <span className="text-primary-500">&</span> I Tax Solutions</div>
-                <div className="text-sm font-medium text-secondary-400 tracking-widest uppercase text-[10px]">Tax Solutions</div>
+                <div className="text-xl font-bold text-white tracking-tight">RNI Accounting Services</div>
+                <div className="text-sm font-medium text-secondary-400 tracking-widest uppercase text-[10px]">Accounting Services</div>
               </div>
             </div>
             <div className="flex gap-8 text-sm font-bold uppercase tracking-widest">
@@ -774,10 +763,8 @@ const Home = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10 text-xs font-semibold text-secondary-500 tracking-widest uppercase">
-            <div>© {new Date().getFullYear()} R&I GLOBAL. All rights reserved.</div>
+            <div>© {new Date().getFullYear()} RNI Accounting Services. All rights reserved.</div>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-primary-400 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-primary-400 transition-colors">Terms</a>
             </div>
           </div>
         </div>
