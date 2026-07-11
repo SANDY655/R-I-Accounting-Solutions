@@ -19,6 +19,8 @@ import {
   FiMessageCircle,
   FiCheckCircle,
 } from "react-icons/fi";
+import { PHONE_DISPLAY, WHATSAPP_LABEL } from "./constants/contact";
+import WhatsAppLink from "./components/WhatsAppLink";
 
 // ==========================================
 // PRECISE SPRING ANIMATIONS
@@ -128,9 +130,10 @@ const Navbar = () => {
       {/* ── Main Navbar ───────────────────────────────────── */}
       <nav
         className={`fixed left-0 right-0 z-50 transition-all duration-500 flex items-center justify-between px-6 lg:px-12
-          ${isScrolled
-            ? "top-0 py-4 bg-white/80 backdrop-blur-2xl shadow-[0_1px_0_rgba(0,0,0,0.06)]"
-            : "top-0 lg:top-10 py-5 lg:py-4"
+          ${
+            isScrolled
+              ? "top-0 py-4 bg-white/80 backdrop-blur-2xl shadow-[0_1px_0_rgba(0,0,0,0.06)]"
+              : "top-0 lg:top-10 py-5 lg:py-4"
           }`}
       >
         {/* Logo + Firm Name */}
@@ -141,7 +144,9 @@ const Navbar = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={transitionSpring}
         >
-          <div className={`relative rounded-xl overflow-hidden transition-all duration-500 ${isScrolled ? "shadow-md" : "shadow-lg"}`}>
+          <div
+            className={`relative rounded-xl overflow-hidden transition-all duration-500 ${isScrolled ? "shadow-md" : "shadow-lg"}`}
+          >
             <img
               src="/images/Logo.jpeg"
               alt="RNI Logo"
@@ -149,7 +154,9 @@ const Navbar = () => {
             />
           </div>
           <div className="hidden sm:block">
-            <div className={`text-[15px] font-bold tracking-tight transition-colors duration-300 ${isScrolled ? "text-secondary-950" : "text-secondary-950"}`}>
+            <div
+              className={`text-[15px] font-bold tracking-tight transition-colors duration-300 ${isScrolled ? "text-secondary-950" : "text-secondary-950"}`}
+            >
               RNI Accounting Services
             </div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary-400 leading-none mt-0.5">
@@ -170,9 +177,10 @@ const Navbar = () => {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={`relative px-5 py-2 rounded-full text-[12px] uppercase tracking-[0.12em] font-bold transition-all duration-300 group
-                ${activeTab === item.id
-                  ? "text-secondary-950"
-                  : "text-secondary-500 hover:text-secondary-900"
+                ${
+                  activeTab === item.id
+                    ? "text-secondary-950"
+                    : "text-secondary-500 hover:text-secondary-900"
                 }`}
             >
               {activeTab === item.id && (
@@ -204,19 +212,19 @@ const Navbar = () => {
           transition={transitionSpring}
         >
           {/* Phone Pill — desktop */}
-          <a
-            href="tel:+919994467838"
+          <WhatsAppLink
             className={`hidden lg:flex items-center gap-2.5 px-4 py-2.5 rounded-full border font-semibold text-sm transition-all duration-300 group
-              ${isScrolled
-                ? "border-secondary-200 bg-white text-secondary-900 hover:border-primary-400 hover:text-primary-600"
-                : "border-secondary-200/80 bg-white/70 backdrop-blur-xl text-secondary-900 hover:border-primary-400 hover:text-primary-600"
+              ${
+                isScrolled
+                  ? "border-secondary-200 bg-white text-secondary-900 hover:border-primary-400 hover:text-primary-600"
+                  : "border-secondary-200/80 bg-white/70 backdrop-blur-xl text-secondary-900 hover:border-primary-400 hover:text-primary-600"
               }`}
           >
             <div className="w-5 h-5 rounded-full bg-primary-100 flex items-center justify-center group-hover:bg-primary-600 transition-colors">
               <FiPhone className="w-2.5 h-2.5 text-primary-600 group-hover:text-white transition-colors" />
             </div>
-            +91 9994467838
-          </a>
+            {WHATSAPP_LABEL}
+          </WhatsAppLink>
 
           {/* CTA Button */}
           <button
@@ -259,8 +267,14 @@ const Navbar = () => {
             {/* Close strip */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-secondary-100">
               <div className="flex items-center gap-3">
-                <img src="/images/Logo.jpeg" alt="RNI" className="h-10 w-auto object-contain" />
-                <div className="text-sm font-bold text-secondary-950 tracking-tight">RNI Accounting Services</div>
+                <img
+                  src="/images/Logo.jpeg"
+                  alt="RNI"
+                  className="h-10 w-auto object-contain"
+                />
+                <div className="text-sm font-bold text-secondary-950 tracking-tight">
+                  RNI Accounting Services
+                </div>
               </div>
               <button
                 className="p-2.5 rounded-full bg-secondary-100 text-secondary-900"
@@ -277,7 +291,12 @@ const Navbar = () => {
                   key={item.id}
                   initial={{ opacity: 0, x: -24 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.07, type: "spring", stiffness: 120, damping: 20 }}
+                  transition={{
+                    delay: idx * 0.07,
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 20,
+                  }}
                   onClick={() => scrollToSection(item.id)}
                   className="flex items-center justify-between py-4 border-b border-secondary-100 text-left group"
                 >
@@ -296,19 +315,28 @@ const Navbar = () => {
               transition={{ delay: 0.35 }}
               className="mx-6 mb-8 p-6 bg-secondary-950 rounded-2xl"
             >
-              <p className="text-secondary-400 text-sm font-medium mb-4">Ready to get started?</p>
+              <p className="text-secondary-400 text-sm font-medium mb-4">
+                Ready to get started?
+              </p>
               <button
                 onClick={() => scrollToSection("contact")}
                 className="w-full py-4 rounded-xl bg-primary-600 text-white font-bold flex items-center justify-center gap-2 hover:bg-primary-700 transition-colors mb-4"
               >
                 Get Consultation <FiArrowRight />
               </button>
-              <a href="tel:+919994467838" className="flex items-center gap-3 group">
+              <WhatsAppLink className="flex items-center gap-3 group">
                 <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
                   <FiPhone className="text-white/70 w-4 h-4" />
                 </div>
-                <span className="text-white font-semibold text-sm group-hover:text-primary-300 transition-colors">+91 9994467838</span>
-              </a>
+                <div className="flex flex-col">
+                  <span className="text-white font-semibold text-sm group-hover:text-primary-300 transition-colors">
+                    {WHATSAPP_LABEL}
+                  </span>
+                  <span className="text-white/50 text-xs group-hover:text-primary-300/70 transition-colors">
+                    {PHONE_DISPLAY}
+                  </span>
+                </div>
+              </WhatsAppLink>
             </motion.div>
           </motion.div>
         )}
@@ -342,10 +370,18 @@ const Home = () => {
         e.target.reset();
       } else {
         const data = await res.json();
-        setFormState({ status: "error", error: data?.errors?.[0]?.message || "Something went wrong. Please try again." });
+        setFormState({
+          status: "error",
+          error:
+            data?.errors?.[0]?.message ||
+            "Something went wrong. Please try again.",
+        });
       }
     } catch {
-      setFormState({ status: "error", error: "Network error. Please check your connection and try again." });
+      setFormState({
+        status: "error",
+        error: "Network error. Please check your connection and try again.",
+      });
     }
   };
 
@@ -366,7 +402,10 @@ const Home = () => {
               initial="hidden"
               animate="visible"
             >
-              <motion.div variants={fadeUpSpring} className="flex items-center gap-4 mb-8">
+              <motion.div
+                variants={fadeUpSpring}
+                className="flex items-center gap-4 mb-8"
+              >
                 <div className="h-[1px] w-12 bg-accent-500"></div>
                 <span className="uppercase tracking-[0.2em] text-xs font-bold text-secondary-800">
                   Precision & Clarity
@@ -379,7 +418,9 @@ const Home = () => {
               >
                 Financial <br />
                 <span className="relative">
-                  <span className="relative z-10 text-primary-600">Architecture</span>
+                  <span className="relative z-10 text-primary-600">
+                    Architecture
+                  </span>
                   <div className="absolute bottom-2 left-0 w-full h-4 bg-accent-200/50 -z-10 transform -rotate-1 origin-left"></div>
                 </span>
                 <br />
@@ -390,13 +431,20 @@ const Home = () => {
                 variants={fadeUpSpring}
                 className="text-lg md:text-xl text-secondary-600 leading-[1.6] max-w-xl font-medium mb-12"
               >
-                Elevating enterprise standards through uncompromising audit,
-                tax advisory, and forensic accounting across the global landscape.
+                Elevating enterprise standards through uncompromising audit, tax
+                advisory, and forensic accounting across the global landscape.
               </motion.p>
 
-              <motion.div variants={fadeUpSpring} className="flex flex-wrap items-center gap-6">
+              <motion.div
+                variants={fadeUpSpring}
+                className="flex flex-wrap items-center gap-6"
+              >
                 <button
-                  onClick={() => document.getElementById("contact").scrollIntoView({ behavior: "smooth" })}
+                  onClick={() =>
+                    document
+                      .getElementById("contact")
+                      .scrollIntoView({ behavior: "smooth" })
+                  }
                   className="group relative px-8 py-4 bg-primary-600 text-white font-bold tracking-wide rounded-full overflow-hidden shadow-[0_10px_40px_-10px_rgba(27,146,161,0.5)] hover:-translate-y-1 transition-all duration-300"
                 >
                   <span className="relative z-10 flex items-center gap-3">
@@ -408,13 +456,20 @@ const Home = () => {
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-3">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="w-10 h-10 rounded-full border-2 border-[#F8FAFC] bg-secondary-100 flex items-center justify-center overflow-hidden">
-                        <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Client" />
+                      <div
+                        key={i}
+                        className="w-10 h-10 rounded-full border-2 border-[#F8FAFC] bg-secondary-100 flex items-center justify-center overflow-hidden"
+                      >
+                        <img
+                          src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                          alt="Client"
+                        />
                       </div>
                     ))}
                   </div>
                   <div className="text-sm font-semibold text-secondary-800">
-                    Trusted by <span className="text-primary-600">500+</span> Clients
+                    Trusted by <span className="text-primary-600">500+</span>{" "}
+                    Clients
                   </div>
                 </div>
               </motion.div>
@@ -436,7 +491,6 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary-950/80 via-secondary-950/20 to-transparent"></div>
 
                 {/* Floating Glass Stat */}
-              
               </div>
             </motion.div>
           </div>
@@ -447,34 +501,49 @@ const Home = () => {
       <section id="services" className="py-32 px-6 lg:px-12 bg-white relative">
         <div className="max-w-[1400px] mx-auto">
           <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
             className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20"
           >
             <div className="max-w-3xl">
-              <motion.div variants={fadeUpSpring} className="flex items-center gap-4 mb-6">
+              <motion.div
+                variants={fadeUpSpring}
+                className="flex items-center gap-4 mb-6"
+              >
                 <div className="h-[1px] w-12 bg-primary-500"></div>
                 <span className="uppercase tracking-[0.2em] text-xs font-bold text-primary-600">
                   Capabilities
                 </span>
               </motion.div>
-              <motion.h2 variants={fadeUpSpring} className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-950 tracking-tighter leading-[1.1]">
+              <motion.h2
+                variants={fadeUpSpring}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-950 tracking-tighter leading-[1.1]"
+              >
                 Comprehensive
                 <br /> Advisory & Strategy.
               </motion.h2>
             </div>
-            <motion.p variants={fadeUpSpring} className="text-lg text-secondary-600 font-medium max-w-md">
-              We engineer financial frameworks that guarantee compliance while unlocking aggressive corporate growth vectors.
+            <motion.p
+              variants={fadeUpSpring}
+              className="text-lg text-secondary-600 font-medium max-w-md"
+            >
+              We engineer financial frameworks that guarantee compliance while
+              unlocking aggressive corporate growth vectors.
             </motion.p>
           </motion.div>
 
           {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(300px,_auto)] gap-6">
-
             {/* LARGE FEATURE CARD */}
             <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpSpring}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUpSpring}
               className="lg:col-span-2 lg:row-span-2 group relative overflow-hidden rounded-[2rem] bg-secondary-950 p-10 flex flex-col justify-between cursor-pointer"
-              onClick={() => navigate('/services/corporate-tax')}
+              onClick={() => navigate("/services/corporate-tax")}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="absolute -right-20 -top-20 w-[400px] h-[400px] bg-primary-500/10 rounded-full blur-[80px] group-hover:bg-primary-500/20 transition-all duration-700"></div>
@@ -487,94 +556,199 @@ const Home = () => {
                 <div className="inline-block px-3 py-1 bg-accent-500/20 text-accent-400 text-xs font-bold tracking-widest uppercase rounded-full mb-4 border border-accent-500/30">
                   Flagship Expertise
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4 group-hover:text-primary-300 transition-colors duration-500">UAE Corporate Tax</h3>
+                <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4 group-hover:text-primary-300 transition-colors duration-500">
+                  UAE Corporate Tax
+                </h3>
                 <p className="text-secondary-300 text-lg leading-relaxed max-w-md mb-8">
-                  End-to-end compliance, transfer pricing, and strategic structuring for the evolving UAE fiscal landscape.
+                  End-to-end compliance, transfer pricing, and strategic
+                  structuring for the evolving UAE fiscal landscape.
                 </p>
                 <div className="flex items-center text-primary-400 font-semibold group-hover:text-white transition-colors">
-                  Explore Solutions <FiArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                  Explore Solutions{" "}
+                  <FiArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
                 </div>
               </div>
             </motion.div>
 
             {/* MEDIUM CARDS */}
             {[
-              { id: "auditing-assurance", colSpan: "lg:col-span-2", title: "Auditing & Assurance", desc: "Rigorous independent verifications to solidify stakeholder confidence and internal control integrity.", icon: FiSearch, bg: "bg-secondary-50" },
-              { id: "accounting", colSpan: "lg:col-span-1", title: "Accounting", desc: "Precision financial reporting and management structuring.", icon: FiBarChart2, bg: "bg-white border border-secondary-200" },
-              { id: "transfer-pricing", colSpan: "lg:col-span-1", title: "Transfer Pricing", desc: "OECD-compliant master file documentation and arm's length strategy formulation.", icon: FiTrendingUp, bg: "bg-white border border-secondary-200" },
-              { id: "vat-services", colSpan: "lg:col-span-1", title: "UAE VAT", desc: "Complex indirect tax optimization ensuring compliance across the GCC.", icon: FiGlobe, bg: "bg-primary-50" },
-              { id: "oman-vat", colSpan: "lg:col-span-1", title: "Oman VAT", desc: "Comprehensive support for Oman VAT registration, filing, and advisory.", icon: FiFileText, bg: "bg-white border border-secondary-200" },
-              { id: "book-keeping", colSpan: "lg:col-span-1", title: "Book Keeping", desc: "Systematic recording of all transactions for organized financial records.", icon: FiBarChart2, bg: "bg-secondary-50" },
-              { id: "ussalestax", colSpan: "lg:col-span-4", title: "US Sales Tax", desc: "Comprehensive advisory on new tax legislations, 2025 rates, and permanent extensions for global entities operating within the US domain.", icon: FiGlobe, bg: "bg-secondary-950 text-white group-hover:bg-secondary-900" },
+              {
+                id: "auditing-assurance",
+                colSpan: "lg:col-span-2",
+                title: "Auditing & Assurance",
+                desc: "Rigorous independent verifications to solidify stakeholder confidence and internal control integrity.",
+                icon: FiSearch,
+                bg: "bg-secondary-50",
+              },
+              {
+                id: "accounting",
+                colSpan: "lg:col-span-1",
+                title: "Accounting",
+                desc: "Precision financial reporting and management structuring.",
+                icon: FiBarChart2,
+                bg: "bg-white border border-secondary-200",
+              },
+              {
+                id: "transfer-pricing",
+                colSpan: "lg:col-span-1",
+                title: "Transfer Pricing",
+                desc: "OECD-compliant master file documentation and arm's length strategy formulation.",
+                icon: FiTrendingUp,
+                bg: "bg-white border border-secondary-200",
+              },
+              {
+                id: "vat-services",
+                colSpan: "lg:col-span-1",
+                title: "UAE VAT",
+                desc: "Complex indirect tax optimization ensuring compliance across the GCC.",
+                icon: FiGlobe,
+                bg: "bg-primary-50",
+              },
+              {
+                id: "oman-vat",
+                colSpan: "lg:col-span-1",
+                title: "Oman VAT",
+                desc: "Comprehensive support for Oman VAT registration, filing, and advisory.",
+                icon: FiFileText,
+                bg: "bg-white border border-secondary-200",
+              },
+              {
+                id: "book-keeping",
+                colSpan: "lg:col-span-1",
+                title: "Book Keeping",
+                desc: "Systematic recording of all transactions for organized financial records.",
+                icon: FiBarChart2,
+                bg: "bg-secondary-50",
+              },
+              {
+                id: "ussalestax",
+                colSpan: "lg:col-span-4",
+                title: "US Sales Tax",
+                desc: "Comprehensive advisory on new tax legislations, 2025 rates, and permanent extensions for global entities operating within the US domain.",
+                icon: FiGlobe,
+                bg: "bg-secondary-950 text-white group-hover:bg-secondary-900",
+              },
             ].map((srv, i) => {
               const IconComponent = srv.icon;
               return (
                 <motion.div
                   key={srv.title}
-                  initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpSpring}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUpSpring}
                   custom={i}
                   onClick={() => navigate(`/services/${srv.id}`)}
                   className={`${srv.colSpan} ${srv.bg} group relative overflow-hidden rounded-[2rem] p-8 flex flex-col cursor-pointer transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:-translate-y-1`}
                 >
-                  <div className={`w-14 h-14 rounded-2xl shadow-sm flex items-center justify-center mb-6 transition-colors duration-500 ${srv.id === 'ussalestax' ? 'bg-white/10 group-hover:bg-primary-600' : 'bg-white group-hover:bg-primary-600'}`}>
-                    <IconComponent className={`w-6 h-6 transition-colors duration-500 ${srv.id === 'ussalestax' ? 'text-white' : 'text-secondary-900'} group-hover:text-white`} />
+                  <div
+                    className={`w-14 h-14 rounded-2xl shadow-sm flex items-center justify-center mb-6 transition-colors duration-500 ${srv.id === "ussalestax" ? "bg-white/10 group-hover:bg-primary-600" : "bg-white group-hover:bg-primary-600"}`}
+                  >
+                    <IconComponent
+                      className={`w-6 h-6 transition-colors duration-500 ${srv.id === "ussalestax" ? "text-white" : "text-secondary-900"} group-hover:text-white`}
+                    />
                   </div>
                   <div className="mt-auto">
-                    <h3 className={`text-2xl font-bold tracking-tight mb-3 ${srv.id === 'ussalestax' ? 'text-white' : 'text-secondary-950'}`}>{srv.title}</h3>
-                    <p className={`font-medium leading-relaxed ${srv.id === 'ussalestax' ? 'text-secondary-300' : 'text-secondary-600'}`}>{srv.desc}</p>
+                    <h3
+                      className={`text-2xl font-bold tracking-tight mb-3 ${srv.id === "ussalestax" ? "text-white" : "text-secondary-950"}`}
+                    >
+                      {srv.title}
+                    </h3>
+                    <p
+                      className={`font-medium leading-relaxed ${srv.id === "ussalestax" ? "text-secondary-300" : "text-secondary-600"}`}
+                    >
+                      {srv.desc}
+                    </p>
                   </div>
                   {/* Subtle hover arrow corner */}
                   <div className="absolute top-8 right-8 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
                     <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md shadow-sm flex items-center justify-center">
-                      <FiArrowRight className={`w-5 h-5 ${srv.id === 'ussalestax' ? 'text-white' : 'text-primary-600'}`} />
+                      <FiArrowRight
+                        className={`w-5 h-5 ${srv.id === "ussalestax" ? "text-white" : "text-primary-600"}`}
+                      />
                     </div>
                   </div>
                 </motion.div>
-              )
+              );
             })}
           </div>
         </div>
       </section>
 
       {/* ================= ABOUT: FLOATING GLASS CARDS ================= */}
-      <section id="about" className="py-32 px-6 lg:px-12 bg-secondary-950 relative overflow-hidden">
+      <section
+        id="about"
+        className="py-32 px-6 lg:px-12 bg-secondary-950 relative overflow-hidden"
+      >
         {/* Abstract dark mode light */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-primary-900/30 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-              <motion.div variants={fadeUpSpring} className="flex items-center gap-4 mb-6">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.div
+                variants={fadeUpSpring}
+                className="flex items-center gap-4 mb-6"
+              >
                 <div className="h-[1px] w-12 bg-accent-500"></div>
                 <span className="uppercase tracking-[0.2em] text-xs font-bold text-accent-400">
                   The Firm
                 </span>
               </motion.div>
-              <motion.h2 variants={fadeUpSpring} className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter leading-[1.1] mb-8">
-                Uncompromising <br /> <span className="text-primary-400">Standards.</span>
+              <motion.h2
+                variants={fadeUpSpring}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter leading-[1.1] mb-8"
+              >
+                Uncompromising <br />{" "}
+                <span className="text-primary-400">Standards.</span>
               </motion.h2>
-              <motion.p variants={fadeUpSpring} className="text-xl text-secondary-300 font-medium leading-[1.6] mb-12 max-w-lg">
-                We are a collective of elite financial architects operating across the Gulf. We don't just file taxes; we engineer financial security.
+              <motion.p
+                variants={fadeUpSpring}
+                className="text-xl text-secondary-300 font-medium leading-[1.6] mb-12 max-w-lg"
+              >
+                We are a collective of elite financial architects operating
+                across the Gulf. We don't just file taxes; we engineer financial
+                security.
               </motion.p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { icon: FiGlobe, title: "Global Insight", desc: "Cross-border compliance" },
-                  { icon: FiCheckCircle, title: "Zero Error", desc: "Precision audited reporting" }
+                  {
+                    icon: FiGlobe,
+                    title: "Global Insight",
+                    desc: "Cross-border compliance",
+                  },
+                  {
+                    icon: FiCheckCircle,
+                    title: "Zero Error",
+                    desc: "Precision audited reporting",
+                  },
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <motion.div key={item.title} variants={fadeUpSpring} className="flex gap-4">
+                    <motion.div
+                      key={item.title}
+                      variants={fadeUpSpring}
+                      className="flex gap-4"
+                    >
                       <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
                         <Icon className="text-accent-400 w-5 h-5" />
                       </div>
                       <div>
-                        <h4 className="text-white font-bold tracking-tight mb-1">{item.title}</h4>
-                        <p className="text-secondary-400 text-sm">{item.desc}</p>
+                        <h4 className="text-white font-bold tracking-tight mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-secondary-400 text-sm">
+                          {item.desc}
+                        </p>
                       </div>
                     </motion.div>
-                  )
+                  );
                 })}
               </div>
             </motion.div>
@@ -588,7 +762,11 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <div className="absolute top-10 right-0 w-[80%] h-[400px] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl z-10">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&fit=crop" className="w-full h-full object-cover" alt="Office" />
+                <img
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&fit=crop"
+                  className="w-full h-full object-cover"
+                  alt="Office"
+                />
                 <div className="absolute inset-0 bg-secondary-900/20 mix-blend-multiply"></div>
               </div>
 
@@ -596,44 +774,79 @@ const Home = () => {
                 <div className="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center mb-6">
                   <FiFileText className="text-secondary-950 w-5 h-5" />
                 </div>
-                <h4 className="text-2xl font-bold text-white tracking-tight mb-3">Direct Partner Access</h4>
-                <p className="text-secondary-300 leading-relaxed font-medium">Every account is overseen by a senior partner, ensuring elite strategic counsel.</p>
+                <h4 className="text-2xl font-bold text-white tracking-tight mb-3">
+                  Direct Partner Access
+                </h4>
+                <p className="text-secondary-300 leading-relaxed font-medium">
+                  Every account is overseen by a senior partner, ensuring elite
+                  strategic counsel.
+                </p>
               </div>
             </motion.div>
-
           </div>
         </div>
       </section>
 
       {/* ================= CONTACT: MODERN FLOATING UI ================= */}
-      <section id="contact" className="py-16 md:py-32 px-4 sm:px-6 lg:px-12 bg-[#F8FAFC]">
+      <section
+        id="contact"
+        className="py-16 md:py-32 px-4 sm:px-6 lg:px-12 bg-[#F8FAFC]"
+      >
         <div className="max-w-[1400px] mx-auto bg-white rounded-[2rem] lg:rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-secondary-200 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-
             {/* Contact Info Block */}
             <div className="bg-secondary-950 p-8 sm:p-12 lg:p-16 xl:p-20 flex flex-col justify-between relative overflow-hidden">
               <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary-600/20 rounded-full blur-[100px] pointer-events-none"></div>
 
               <div className="relative z-10">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tighter leading-[1.1] mb-4">
-                  Ready to redefine <br className="hidden sm:block" /> your strategy?
+                  Ready to redefine <br className="hidden sm:block" /> your
+                  strategy?
                 </h2>
                 <p className="text-secondary-400 text-base lg:text-lg max-w-md font-medium">
-                  Connect with our advisory board for a confidential evaluation of your corporate fiscal protocols.
+                  Connect with our advisory board for a confidential evaluation
+                  of your corporate fiscal protocols.
                 </p>
               </div>
 
               <div className="relative z-10 mt-10 lg:mt-20 space-y-4 lg:space-y-6">
+                <WhatsAppLink className="flex items-center gap-4 lg:gap-6 group cursor-pointer w-fit">
+                  <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-primary-500 group-hover:border-primary-500 transition-all duration-300 flex-shrink-0">
+                    <FiPhone className="text-white/70 group-hover:text-white transition-colors w-4 h-4 lg:w-5 lg:h-5" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-base lg:text-xl font-medium text-white/90 group-hover:text-white transition-colors">
+                      {WHATSAPP_LABEL}
+                    </span>
+                    <span className="text-sm lg:text-base font-medium text-white/50 group-hover:text-white/70 transition-colors">
+                      {PHONE_DISPLAY}
+                    </span>
+                  </div>
+                </WhatsAppLink>
+
                 {[
-                  { icon: FiPhone, text: "+91 999 446 7838", href: "tel:+919994467838" },
-                  { icon: FiMail, text: "rnibookkeeping@gmail.com", href: "mailto:rnibookkeeping@gmail.com" },
-                  { icon: FiMapPin, text: "Virtual Office Available", href: null }
+                  {
+                    icon: FiMail,
+                    text: "rnibookkeeping@gmail.com",
+                    href: "mailto:rnibookkeeping@gmail.com",
+                  },
+                  {
+                    icon: FiMapPin,
+                    text: "Virtual Office Available",
+                    href: null,
+                  },
                 ].map((item, i) => (
-                  <a key={i} href={item.href || "#"} className="flex items-center gap-4 lg:gap-6 group cursor-pointer w-fit">
+                  <a
+                    key={i}
+                    href={item.href || "#"}
+                    className="flex items-center gap-4 lg:gap-6 group cursor-pointer w-fit"
+                  >
                     <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-primary-500 group-hover:border-primary-500 transition-all duration-300 flex-shrink-0">
                       <item.icon className="text-white/70 group-hover:text-white transition-colors w-4 h-4 lg:w-5 lg:h-5" />
                     </div>
-                    <span className="text-base lg:text-xl font-medium text-white/90 group-hover:text-white transition-colors break-all">{item.text}</span>
+                    <span className="text-base lg:text-xl font-medium text-white/90 group-hover:text-white transition-colors break-all">
+                      {item.text}
+                    </span>
                   </a>
                 ))}
               </div>
@@ -646,7 +859,9 @@ const Home = () => {
                   <span className="w-2 h-2 rounded-full bg-accent-500 animate-pulse"></span>
                   Accepting Clients
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-secondary-950 tracking-tight">Request Consultation</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-secondary-950 tracking-tight">
+                  Request Consultation
+                </h3>
               </div>
 
               <AnimatePresence mode="wait">
@@ -660,39 +875,83 @@ const Home = () => {
                     <div className="w-20 h-20 rounded-full bg-primary-50 border-2 border-primary-400 flex items-center justify-center mb-6">
                       <FiCheckCircle className="w-10 h-10 text-primary-600" />
                     </div>
-                    <h4 className="text-2xl font-bold text-secondary-950 tracking-tight mb-3">Message Sent!</h4>
+                    <h4 className="text-2xl font-bold text-secondary-950 tracking-tight mb-3">
+                      Message Sent!
+                    </h4>
                     <p className="text-secondary-500 font-medium max-w-xs mb-8">
-                      Thank you for reaching out. We'll get back to you within 24 hours.
+                      Thank you for reaching out. We'll get back to you within
+                      24 hours.
                     </p>
                     <button
-                      onClick={() => setFormState({ status: "idle", error: null })}
+                      onClick={() =>
+                        setFormState({ status: "idle", error: null })
+                      }
                       className="px-8 py-3 rounded-full border border-secondary-200 text-secondary-700 font-semibold hover:border-primary-500 hover:text-primary-600 transition-all"
                     >
                       Send Another
                     </button>
                   </motion.div>
                 ) : (
-                  <motion.form key="form" onSubmit={handleFormSubmit} className="space-y-5">
+                  <motion.form
+                    key="form"
+                    onSubmit={handleFormSubmit}
+                    className="space-y-5"
+                  >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-widest text-secondary-500">Name</label>
-                        <input type="text" name="name" required disabled={formState.status === "loading"} className="w-full bg-secondary-50 border border-transparent border-b-secondary-300 px-4 py-3 rounded-t-xl text-secondary-950 font-medium focus:bg-white focus:border-b-primary-600 focus:ring-0 outline-none transition-all placeholder:text-secondary-400 disabled:opacity-50" placeholder="Your Name" />
+                        <label className="text-xs font-bold uppercase tracking-widest text-secondary-500">
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          disabled={formState.status === "loading"}
+                          className="w-full bg-secondary-50 border border-transparent border-b-secondary-300 px-4 py-3 rounded-t-xl text-secondary-950 font-medium focus:bg-white focus:border-b-primary-600 focus:ring-0 outline-none transition-all placeholder:text-secondary-400 disabled:opacity-50"
+                          placeholder="Your Name"
+                        />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-widest text-secondary-500">Email</label>
-                        <input type="email" name="email" required disabled={formState.status === "loading"} className="w-full bg-secondary-50 border border-transparent border-b-secondary-300 px-4 py-3 rounded-t-xl text-secondary-950 font-medium focus:bg-white focus:border-b-primary-600 focus:ring-0 outline-none transition-all placeholder:text-secondary-400 disabled:opacity-50" placeholder="you@company.com" />
+                        <label className="text-xs font-bold uppercase tracking-widest text-secondary-500">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          disabled={formState.status === "loading"}
+                          className="w-full bg-secondary-50 border border-transparent border-b-secondary-300 px-4 py-3 rounded-t-xl text-secondary-950 font-medium focus:bg-white focus:border-b-primary-600 focus:ring-0 outline-none transition-all placeholder:text-secondary-400 disabled:opacity-50"
+                          placeholder="you@company.com"
+                        />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-secondary-500">Service of Interest</label>
-                      <select name="service" required disabled={formState.status === "loading"} className="w-full bg-secondary-50 border border-transparent border-b-secondary-300 px-4 py-3 rounded-t-xl text-secondary-950 font-medium focus:bg-white focus:border-b-primary-600 focus:ring-0 outline-none transition-all cursor-pointer disabled:opacity-50">
-                        <option value="" disabled>Select a practice area...</option>
-                        <option value="Accounting Services">Accounting Services</option>
-                        <option value="Auditing & Assurance">Auditing &amp; Assurance</option>
+                      <label className="text-xs font-bold uppercase tracking-widest text-secondary-500">
+                        Service of Interest
+                      </label>
+                      <select
+                        name="service"
+                        required
+                        disabled={formState.status === "loading"}
+                        className="w-full bg-secondary-50 border border-transparent border-b-secondary-300 px-4 py-3 rounded-t-xl text-secondary-950 font-medium focus:bg-white focus:border-b-primary-600 focus:ring-0 outline-none transition-all cursor-pointer disabled:opacity-50"
+                      >
+                        <option value="" disabled>
+                          Select a practice area...
+                        </option>
+                        <option value="Accounting Services">
+                          Accounting Services
+                        </option>
+                        <option value="Auditing & Assurance">
+                          Auditing &amp; Assurance
+                        </option>
                         <option value="Book Keeping">Book Keeping</option>
                         <option value="UAE VAT">UAE VAT</option>
-                        <option value="Corporate Tax UAE">Corporate Tax — UAE</option>
-                        <option value="Transfer Pricing">Transfer Pricing (UAE)</option>
+                        <option value="Corporate Tax UAE">
+                          Corporate Tax — UAE
+                        </option>
+                        <option value="Transfer Pricing">
+                          Transfer Pricing (UAE)
+                        </option>
                         <option value="Oman VAT">Oman VAT</option>
                         <option value="Kuwait VAT">Kuwait VAT</option>
                         <option value="US Sales Tax">US Sales Tax</option>
@@ -700,8 +959,17 @@ const Home = () => {
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-secondary-500">Message</label>
-                      <textarea name="message" rows="4" required disabled={formState.status === "loading"} className="w-full bg-secondary-50 border border-transparent border-b-secondary-300 px-4 py-3 rounded-t-xl text-secondary-950 font-medium focus:bg-white focus:border-b-primary-600 focus:ring-0 outline-none transition-all resize-none placeholder:text-secondary-400 disabled:opacity-50" placeholder="Briefly describe your requirements..."></textarea>
+                      <label className="text-xs font-bold uppercase tracking-widest text-secondary-500">
+                        Message
+                      </label>
+                      <textarea
+                        name="message"
+                        rows="4"
+                        required
+                        disabled={formState.status === "loading"}
+                        className="w-full bg-secondary-50 border border-transparent border-b-secondary-300 px-4 py-3 rounded-t-xl text-secondary-950 font-medium focus:bg-white focus:border-b-primary-600 focus:ring-0 outline-none transition-all resize-none placeholder:text-secondary-400 disabled:opacity-50"
+                        placeholder="Briefly describe your requirements..."
+                      ></textarea>
                     </div>
 
                     {formState.status === "error" && (
@@ -719,14 +987,32 @@ const Home = () => {
                       <span className="relative z-10 flex items-center justify-center gap-3">
                         {formState.status === "loading" ? (
                           <>
-                            <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+                            <svg
+                              className="animate-spin w-5 h-5"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                              />
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8v8H4z"
+                              />
                             </svg>
                             Sending...
                           </>
                         ) : (
-                          <>Submit Inquiry <FiArrowRight className="group-hover:translate-x-1 transition-transform" /></>
+                          <>
+                            Submit Inquiry{" "}
+                            <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+                          </>
                         )}
                       </span>
                       {formState.status !== "loading" && (
@@ -737,7 +1023,6 @@ const Home = () => {
                 )}
               </AnimatePresence>
             </div>
-
           </div>
         </div>
       </section>
@@ -749,23 +1034,48 @@ const Home = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-16">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1.5 shadow-lg">
-                <img src="/images/Logo.jpeg" alt="RNI Logo" className="w-full h-full object-contain" />
+                <img
+                  src="/images/Logo.jpeg"
+                  alt="RNI Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
-                <div className="text-xl font-bold text-white tracking-tight">RNI Accounting Services</div>
-                <div className="text-sm font-medium text-secondary-400 tracking-widest uppercase text-[10px]">Accounting Services</div>
+                <div className="text-xl font-bold text-white tracking-tight">
+                  RNI Accounting Services
+                </div>
+                <div className="text-sm font-medium text-secondary-400 tracking-widest uppercase text-[10px]">
+                  Accounting Services
+                </div>
               </div>
             </div>
             <div className="flex gap-8 text-sm font-bold uppercase tracking-widest">
-              <a href="#services" className="text-secondary-400 hover:text-white transition-colors">Expertise</a>
-              <a href="#about" className="text-secondary-400 hover:text-white transition-colors">The Firm</a>
-              <a href="#contact" className="text-secondary-400 hover:text-accent-400 transition-colors">Portal</a>
+              <a
+                href="#services"
+                className="text-secondary-400 hover:text-white transition-colors"
+              >
+                Expertise
+              </a>
+              <a
+                href="#about"
+                className="text-secondary-400 hover:text-white transition-colors"
+              >
+                The Firm
+              </a>
+              <a
+                href="#contact"
+                className="text-secondary-400 hover:text-accent-400 transition-colors"
+              >
+                Portal
+              </a>
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10 text-xs font-semibold text-secondary-500 tracking-widest uppercase">
-            <div>© {new Date().getFullYear()} RNI Accounting Services. All rights reserved.</div>
-            <div className="flex gap-6">
+            <div>
+              © {new Date().getFullYear()} RNI Accounting Services. All rights
+              reserved.
             </div>
+            <div className="flex gap-6"></div>
           </div>
         </div>
       </footer>
