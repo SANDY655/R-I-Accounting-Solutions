@@ -1,5 +1,5 @@
-export const PHONE_NUMBER = "91971523008156";
-export const PHONE_DISPLAY = "+91 971523008156";
+export const PHONE_NUMBER = "971523008156";
+export const PHONE_DISPLAY = "+971 523008156";
 export const WHATSAPP_LABEL = "Chat on WhatsApp Business";
 
 export const WHATSAPP_MESSAGE =
